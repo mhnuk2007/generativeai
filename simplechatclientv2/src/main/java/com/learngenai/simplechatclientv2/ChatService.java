@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ChatService {
 
-    @Autowired
-    private ChatClient chatClient;
+    private final ChatClient chatClient;
+
+    public ChatService(ChatClient chatClient){
+        this.chatClient = chatClient;
+    }
 
     public String askAi(String message) {
         return chatClient.prompt()
